@@ -1,1 +1,3 @@
-# SQL-snippets
+## SQL-snippets
+
+Some examples

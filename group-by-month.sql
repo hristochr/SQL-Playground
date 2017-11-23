@@ -1,4 +1,6 @@
 /*mysql syntax*/
+vim: syntax=java
+
   SELECT col1,
          col2,
          col3,

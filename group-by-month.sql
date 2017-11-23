@@ -1,5 +1,5 @@
 /*mysql syntax*/
-vim: syntax=sql
+vim: syntax=SQL
 
   SELECT col1,
          col2,

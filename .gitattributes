@@ -1,2 +1,2 @@
 $ cat .gitattributes
-*.rb linguist-language=SQL
+*.rb linguist-language=mysql

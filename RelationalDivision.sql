@@ -32,7 +32,8 @@ INSERT INTO Hangar VALUES
 ('B-52 Bomber'),
 ('F-14 Fighter')
 
-/*relational division method 1 (with remainder), 2 nested queries -> give me all pilots for whom there are NO planes in the hanger that they can NOT fly*/
+/*relational division method 1 (with remainder), 2 nested queries -> give me all pilots for whom there are NO planes in the hanger that 
+they can NOT fly*/
 SELECT DISTINCT pilot
   FROM PilotSkills AS PS1 
   WHERE NOT EXISTS
@@ -58,7 +59,8 @@ result set:
     GROUP BY PS1.pilot
 HAVING COUNT(PS1.plane) = (SELECT COUNT(plane) FROM Hangar);
 
-/*relational division method 3 (exact) -> give me pilots whose skills have the same number as the number of planes and they match the planes in the hangar */
+/*relational division method 3 (exact) -> give me pilots whose skills have the same number as the number of planes and they match 
+  the planes in the hangar */
          SELECT PS1.pilot
 		   FROM PilotSkills AS PS1
 LEFT OUTER JOIN Hangar AS H1

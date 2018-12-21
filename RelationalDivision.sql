@@ -35,8 +35,8 @@ INSERT INTO Hangar VALUES
 /*relational division method 1 (with remainder), 2 nested queries -> give me all pilots for whom there are NO planes in the hanger that 
 they can NOT fly*/
 SELECT DISTINCT pilot
-  FROM PilotSkills AS PS1 
-  WHERE NOT EXISTS
+           FROM PilotSkills AS PS1 
+      WHERE NOT EXISTS
        (SELECT *
           FROM Hangar
          WHERE NOT EXISTS
@@ -55,19 +55,19 @@ result set:
   then goup by pilot for those that can fly all planes*/
       SELECT PS1.pilot
         FROM PilotSkills AS PS1, Hangar AS H1
-	   WHERE PS1.plane = H1.plane
+       WHERE PS1.plane = H1.plane
     GROUP BY PS1.pilot
 HAVING COUNT(PS1.plane) = (SELECT COUNT(plane) FROM Hangar);
 
 /*relational division method 3 (exact) -> give me pilots whose skills have the same number as the number of planes and they match 
   the planes in the hangar */
          SELECT PS1.pilot
-		   FROM PilotSkills AS PS1
+           FROM PilotSkills AS PS1
 LEFT OUTER JOIN Hangar AS H1
-			 ON PS1.plane = H1.plane
-	   GROUP BY PS1.pilot
-	     HAVING COUNT(PS1.plane) = (SELECT COUNT(plane) FROM Hangar)
-			AND COUNT(H1.plane) = (SELECT COUNT(plane) FROM Hangar);
+             ON PS1.plane = H1.plane
+       GROUP BY PS1.pilot
+  HAVING COUNT(PS1.plane) = (SELECT COUNT(plane) FROM Hangar)
+  AND COUNT(H1.plane) = (SELECT COUNT(plane) FROM Hangar);
 
 /*
 result set:				   
